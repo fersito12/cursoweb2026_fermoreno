@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0c0910;
+    color: #f3f4f6;
+    overflow-x: hidden;
+}
+
+.header {
+    background-color: rgba(12, 9, 16, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #ff6600;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Creepster', cursive, sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: #ff6600;
+    text-decoration: none;
+    text-shadow: 0 0 12px rgba(255, 102, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #f3f4f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff6600;
+    text-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ff6600;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.seccion-carrusel {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.seccion-carrusel h2, .seccion-catalogo h2 {
+    font-family: 'Creepster', cursive, sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    color: #a855f7;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+.carrusel-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #6b21a8;
+    box-shadow: 0 0 25px rgba(107, 33, 168, 0.5);
+    background-color: #181321;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+    z-index: 1;
+    transition: filter 0.5s;
+}
+
+.slide:hover img {
+    filter: brightness(80%);
+}
+
+.slide-caption {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(12, 9, 16, 0.95), transparent);
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    text-align: left;
+}
+
+.slide-caption h3 {
+    color: #ff6600;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 6px rgba(255, 102, 0, 0.4);
+}
+
+.slide-caption p {
+    color: #b0a8b9;
+    font-size: 0.95rem;
+}
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(12, 9, 16, 0.8);
+    color: #ff6600;
+    border: 1px solid #ff6600;
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+    transition: background 0.3s, color 0.3s;
+}
+
+.carrusel-btn:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+.carrusel-btn.prev { left: 15px; }
+.carrusel-btn.next { right: 15px; }
+
+.indicadores {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #332940;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.dot.active {
+    background-color: #ff6600;
+    box-shadow: 0 0 8px #ff6600;
+}
+
+.seccion-catalogo {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.grid-disfraces {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #181321;
+    border-radius: 12px;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #ff6600;
+    box-shadow: 0 12px 30px rgba(255, 102, 0, 0.25);
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: brightness(85%);
+    transition: filter 0.3s;
+}
+
+.card:hover img {
+    filter: brightness(100%);
+}
+
+.card h3 {
+    margin: 15px 0 5px 0;
+    font-size: 1.2rem;
+    color: #f3f4f6;
+}
+
+.precio {
+    color: #9d4edd;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.btn-comprar {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s;
+    margin-top: auto;
+}
+
+.btn-comprar:hover {
+    background-color: #e55b00;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background-color: #07050a;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 102, 0, 0.2);
+    color: #b0a8b9;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 65px;
+        flex-direction: column;
+        background-color: rgba(12, 9, 16, 0.98);
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+        transition: 0.3s ease;
+        border-bottom: 2px solid #ff6600;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .carrusel-container {
+        height: 300px;
+    }
+}

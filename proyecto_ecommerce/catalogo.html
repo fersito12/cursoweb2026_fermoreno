@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>CAPZONE | Catálogo de Gorras</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-icon-btn {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+        .cart-icon-btn:hover {
+            background-color: #d62828;
+        }
+        .cart-badge {
+            background-color: white;
+            color: #e63946;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.85rem;
+        }
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: #18181c;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.7);
+            z-index: 1000;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #ffffff;
+        }
+        .cart-modal.active {
+            right: 0;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .cart-header h2 {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        .close-cart-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .close-cart-btn:hover {
+            color: #fff;
+        }
+        .cart-items-container {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222228;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        .cart-item-details h4 {
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        .cart-item-details p {
+            font-size: 0.85rem;
+            color: #e63946;
+            font-weight: bold;
+        }
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .cart-footer {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .btn-checkout {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-checkout:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CAPZONE</div>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="suscripcion.html">Ofertas</a>
+</nav>
+    </header>
+
+    <main class="catalog-container">
+        <h1 class="section-title">Colección de Gorras</h1>
+        <p class="catalog-subtitle">Explora nuestras ediciones exclusivas y modelos urbanos.</p>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://static.caphunters.com/40205-large_default/o.webp">
+                </div>
+                <div class="product-info">
+                    <h3>Gorra NY Black</h3>
+                    <p class="description">Gorra visera curva con ajuste snapback y bordado frontal en reli</p>
+                    <p class="price">$799.00 MXN</p>
+                    <button class="btn-primary btn-block" onclick="addToCart('Gorra NY Black', 799)">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYZ_UyjFCD-I_AAresA5X4UtoU1loHpy1c7Q9S9eEavCJ2Dq3FaNOKJvqx&s=10">
+                </div>
+                <div class="product-info">
+                    <h3>Gorra elegante Red</h3>
+                    <p class="description">Diseño clásico con malla trasera transpirable y visera semicurva.</p>
+                    <p class="price">$549.00 MXN</p>
+                    <button class="btn-primary btn-block" onclick="addToCart('Gorra elegante Red', 549)">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i5.walmartimages.com/asr/40e171ec-456d-4cf0-95c9-7c79cea575e2.025b8fa54ea68154658530b544252e3c.jpeg">
+                </div>
+                <div class="product-info">
+                    <h3>Gorra Minimalista</h3>
+                    <p class="description">Confeccionada en 100% algodón suave con correa ajustable metálica.</p>
+                    <p class="price">$499.00 MXN</p>
+                    <button class="btn-primary btn-block" onclick="addToCart('Gorra Minimalista', 499)">Agregar al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://acdn-us.mitiendanube.com/stores/002/871/583/products/img_0906-a198390ef19ca3227417462351698865-1024-1024.webp">
+                </div>
+                <div class="product-info">
+                    <h3>Gorra Edición Limitada</h3>
+                    <p class="description">Edición limitada con patrón de camuflaje y parche grabado.</p>
+                    <p class="price">$2,000.00 MXN</p>
+                    <button class="btn-primary btn-block" onclick="addToCart('Gorra Edición Limitada', 2000)">Agregar al Carrito</button>
+                </div>
+                </div>
+        </div>
+        </main>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Tu Carrito de Compras</h2>
+            <button class="close-cart-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cartItems">
+            <p style="color: #777; text-align: center; margin-top: 20px;">El carrito está vacío.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00 MXN</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CAPZONE. DERECHOS RESERVADOS DE FER</p>
+    </footer>
+    <script>
+        let cart = [];
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCartUI();
+            document.getElementById('cartModal').classList.add('active');
+        }
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+function updateCartUI() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML =
+            '<p style="color: #777; text-align: center; margin-top: 20px;">El carrito está vacío.</p>';
+        cartTotal.textContent = '$0.00 MXN';
+        return;
+    }
+    let html = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price;
+        html += `
+            <div class="cart-item">
+                <div class="cart-item-details">
+                    <h4>${item.title}</h4>
+                    <p>$${item.price}.00 MXN</p>
+                </div>
+                <button class="remove-btn" onclick="removeFromCart(${index})">
+                    🗑️
+                </button>
+                </div>`; });
+    cartItemsContainer.innerHTML = html;
+    cartTotal.textContent = `$${total}.00 MXN`;
+        }
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío.');
+                return;}
+            alert('¡Gracias por tu compra en CAPZONE!');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>

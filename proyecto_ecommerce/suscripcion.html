@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPZONE | Suscripción</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .subscription-section {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .subscription-card {
+            background-color: #18181c;
+            width: 100%;
+            max-width: 550px;
+            padding: 45px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .subscription-card h1 {
+            color: #ffffff;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+        .subscription-card h1 span {
+            color: #e63946;
+        }
+
+        .subscription-card p {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .subscription-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .subscription-form input {
+            padding: 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #0f0f11;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        .subscription-form input:focus {
+            border-color: #e63946;
+        }
+        .subscription-form button {
+            padding: 14px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .subscription-form button:hover {
+            background-color: #d62828;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(230,57,70,0.4);
+        }
+        .success-message {
+            display: none;
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #183d24;
+            color: #6ee7a0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .offer-text {
+            margin-top: 20px;
+            color: #e63946 !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CAPZONE</div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="suscripcion.html">Ofertas</a>
+        </nav>
+    </header>
+    <main class="subscription-section">
+           <div class="subscription-card">
+            <h1>¡Únete a <span>CAPZONE</span>!</h1>
+            <p>
+                Suscríbete para recibir ofertas exclusivas, nuevos lanzamientos y ediciones limitadas directamente en tu correo.
+            </p>
+            <form class="subscription-form" onsubmit="suscribirse(event)">
+                <input 
+                    type="text" 
+                    id="nombre"
+                    placeholder="Tu nombre"
+                    required >
+                <input 
+                    type="email" 
+                    id="correo"
+                    placeholder="Tu correo electrónico" 
+                    required >
+                <button type="submit"> SUSCRIBIRME </button>
+            </form>
+            <div class="success-message" id="mensajeExito">
+                ✓ ¡Suscripción exitosa! Gracias por unirte a CAPZONE.
+            </div>
+            <p class="offer-text">
+                🔥 Recibe nuestras próximas ofertas antes que nadie.
+            </p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 CAPZONE. DERECHOS RESERVADOS DE FER</p>
+    </footer>
+    <script>
+        function suscribirse(event) {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const correo = document.getElementById("correo").value;
+            if (nombre && correo) {document.getElementById("mensajeExito").style.display = "block"; document.querySelector(".subscription-form").reset();
+           }
+        }
+    </script>
+</body>
+</html>

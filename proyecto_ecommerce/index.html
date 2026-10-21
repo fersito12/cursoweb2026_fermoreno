@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CAPZONE | Inicio</title>
+    <style>
+        * { margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f0f11;
+            color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #18181c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #e63946;
+            letter-spacing: 2px;
+        }
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #2ea52a;
+        }
+        .hero-landing {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                        url('https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #dddddd;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: #e63946;
+            color: #ffffff;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+        }
+        .btn-primary:hover {
+            background-color: #d62828;
+            transform: translateY(-3px);
+        }
+        .featured-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .category-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .category-overlay h3 {
+            font-size: 1.4rem;
+            color: #fff;
+        }
+        .features {
+            background-color: #18181c;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 40px 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            text-align: center;
+            max-width: 300px;
+            margin: 10px;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #e63946;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+        footer {
+            background-color: #0a0a0c;
+            color: #777;
+            text-align: center;
+            padding: 25px;
+            margin-top: auto;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CAPZONE</div>
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="suscripcion.html">Ofertas</a>
+</nav>
+    </header>
+    <section class="hero-landing">
+        <div class="hero-content">
+            <h1>Eleva tu Estilo Urbano</h1>
+            <p>Descubre la colección más exclusiva de gorras originales, snapbacks y ediciones limitadas.</p>
+            <a href="catalogo.html" class="btn-primary"> Explorar Catálogo </a>
+        </div>
+    </section>
+    <section class="featured-section">
+        <h2 class="section-title">Colecciones Destacadas</h2>
+        <div class="categories-grid">           
+            <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArVINF_PPwztL1KwygCYr56JB6dBGVjRtcVRrze8xqA&s=10" alt="Snapbacks">
+                <div class="category-overlay">
+                <h3>Urbanas</h3>
+            </div>
+        </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=600&q=80" alt="Trucker Caps">
+                <div class="category-overlay">
+                <h3>Antiguas y Modernas</h3>
+            </div>
+        </div>
+
+        <div class="category-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ-I2B2x-wmb8EZ_loY_LFO_l8dYW9BKi6B9IRw11wqA&s=10"Dad Caps">
+                <div class="category-overlay">
+                <h3>Minimalistas</h3>
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <section class="features">
+        <div class="feature-card">
+            <h3>100% Originales</h3>
+            <p>Productos oficiales con certificado de autenticidad.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Envío Protegido</h3>
+            <p>Cajas especiales rígidas para que tu gorra llegue intacta.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Ediciones Limitadas</h3>
+            <p>Drops exclusivos cada mes para coleccionistas.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy;2026 CAPZONE. DERECHOS RESERVADOS DE FER.</p>
+    </footer>
+</body>
+</html>
