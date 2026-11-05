@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpookyStore 🎃 - Disfraces de Halloween</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/style.css?v=3">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,23 +20,29 @@
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
 
-            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+            <div class="nav-actions">
+                <button type="button" id="btn-carrito" class="btn-carrito">
+                    🛒 Carrito <span id="contador-carrito">0</span>
+                </button>
+                <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="inicio" style="display:none;"></section>
 
+        <!-- Carrusel de Ofertas -->
         <section id="carrusel" class="seccion-carrusel">
             <h2>🔥 Ofertas Terroríficas</h2>
             
             <div class="carrusel-container">
                 <div class="slide active">
-                    <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=800&auto=format&fit=crop" alt="Disfraz de Bruja">
+                    <img src="https://img.magnific.com/foto-gratis/vista-brujas-desalentadoras_23-2150674807.jpg?semt=ais_hybrid&w=740&q=80" alt="Disfraz de Bruja">
                     <div class="slide-caption">
                         <h3>Disfraz de Bruja Nocturna 🧹</h3>
                         <p>Hasta 30% de descuento esta semana</p>
@@ -44,7 +50,7 @@
                 </div>
 
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?w=800&auto=format&fit=crop" alt="Calabaza y Esqueleto">
+                    <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6PQ3MVRhZZMbQuvmBQ1pp8YjDQz6DBYc3OJa4tdEZaA&s=10">
                     <div class="slide-caption">
                         <h3>Máscaras de Neón y Esqueletos 💀</h3>
                         <p>¡Luces LED incluidas para destacar en la noche!</p>
@@ -52,15 +58,15 @@
                 </div>
 
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=800&auto=format&fit=crop" alt="Vampiro">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6PQ3MVRhZZMbQuvmBQ1pp8YjDQz6DBYc3OJa4tdEZaA&s=10" alt="Vampiro">
                     <div class="slide-caption">
                         <h3>Capas de Vampiro Real 🦇</h3>
                         <p>Acabado en terciopelo y cuello alto clásico</p>
                     </div>
                 </div>
 
-                <button class="carrusel-btn prev" id="btn-prev">❮</button>
-                <button class="carrusel-btn next" id="btn-next">❯</button>
+                <button type="button" class="carrusel-btn prev" id="btn-prev">❮</button>
+                <button type="button" class="carrusel-btn next" id="btn-next">❯</button>
             </div>
 
             <div class="indicadores">
@@ -70,42 +76,94 @@
             </div>
         </section>
 
+        <!-- Catálogo de Disfraces -->
         <section id="catalog" class="seccion-catalogo">
             <h2>Catálogo de Disfraces</h2>
             <div class="grid-disfraces">
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop" alt="Bruja">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScZ7V1LC_drcql-L1FyAbQLgtDNLPZxexVZ6xHu0V90g&s=10" alt="Bruja">
                     <h3>Bruja Suprema</h3>
                     <p class="precio">$890.00 MXN</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </article>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?w=400&auto=format&fit=crop" alt="Esqueleto">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6PQ3MVRhZZMbQuvmBQ1pp8YjDQz6DBYc3OJa4tdEZaA&s=10" alt="Esqueleto">
                     <h3>Traje Esqueleto LED</h3>
                     <p class="precio">$1,150.00 MXN</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </article>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop" alt="Vampiro">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVba8PCtnoAhwFvWZ6HF2on46EW_HwLZRLfX2tRUhaMQ&s=10" alt="Vampiro">
                     <h3>Conde Drácula</h3>
                     <p class="precio">$850.00 MXN</p>
-                    <button class="btn-comprar">Añadir al Carrito</button>
-                </article>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.etsystatic.com/66758368/r/il/d5ba83/8445111968/il_300x300.8445111968_d9t4.jpg" alt="Zombie">
+                    <h3>Zombie Apocalipsis</h3>
+                    <p class="precio">$780.00 MXN</p>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5wqQ0deTK4vmgz-ZHMk1ABmJErTkF_bbZINuKqAXVaw&s=10" alt="Payaso Tenebroso">
+                    <h3>Payaso Asesino</h3>
+                    <p class="precio">$920.00 MXN</p>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3W8XRjBHX0uYvkMM8Mj9ScSVllFy_R3qUVafALjOJbw&s" alt="Fantasmal">
+                    <h3>Fantasma Errante</h3>
+                    <p class="precio">$650.00 MXN</p>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStXcg2guz7lEFEcUIzmVnG-gd6tChfsDlXaTxa3bYEpg&s=10" alt="Hombre Lobo">
+                    <h3>Hombre Lobo Feroz</h3>
+                    <p class="precio">$990.00 MXN</p>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
+
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-54rtcU7G3kaI4eyC2Mm23cXzJRE91tciSBd30iyDFw&s=10" alt="Calavera Mexicana">
+                    <h3>Catrín Elegante</h3>
+                    <p class="precio">$820.00 MXN</p>
+                    <button type="button" class="btn-comprar">Añadir al Carrito</button>
+                </div>
             </div>
         </section>
 
+        <!-- Sección Contacto -->
         <section id="contacto" style="text-align: center; padding: 3rem 1rem;">
             <h2 style="color: #a855f7; margin-bottom: 1rem;">¿Dudas con tu pedido? 👻</h2>
-            <p style="color: #9ca3af;">Escríbenos a <span style="color: #ff6600;">contacto@spookystore.com</span> o invoca un murciélago mensajero.</p>
+            <p style="color: #9ca3af;">Escríbenos a <span style="color: #ff6600;">fulanodog8@gmail.com</span> o invoca un murciélago mensajero.</p>
         </section>
     </main>
 
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="modal-contenido">
+            <span id="cerrar-carrito" class="cerrar-carrito">&times;</span>
+            <h2>🛒 Tu Caldero de Compras</h2>
+            <div id="lista-carrito-items">
+                <p class="carrito-vacio">Tu carrito está vacío, ¡agrega algo terrorífico!</p>
+            </div>
+            <div class="carrito-footer">
+                <h3>Total: <span id="carrito-total">$0.00 MXN</span></h3>
+                <button type="button" id="btn-pagar" class="btn-pagar">Proceder al Pago 🦇</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 SpookyStore. Todos los derechos reservados. 👻</p>
+        <p>&copy; 2026 DogStore. Todos los derechos reservados de Fer.</p>
     </footer>
 
-    <script src="./js/script.js?v=3"></script>
+    <script src="script.js"></script>
 </body>
 </html>

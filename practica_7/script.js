@@ -51,12 +51,14 @@ function resetAutoSlide() {
 }
 
 if (btnNext && btnPrev) {
-    btnNext.addEventListener('click', () => {
+    btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
         nextSlide();
         resetAutoSlide();
     });
 
-    btnPrev.addEventListener('click', () => {
+    btnPrev.addEventListener('click', (e) => {
+        e.preventDefault();
         prevSlide();
         resetAutoSlide();
     });
@@ -71,14 +73,102 @@ dots.forEach((dot, index) => {
 
 startAutoSlide();
 
+// --- LÓGICA DEL CARRITO DE COMPRAS ---
+let carrito = [];
+
+const btnCarrito = document.getElementById('btn-carrito');
+const modalCarrito = document.getElementById('modal-carrito');
+const cerrarCarrito = document.getElementById('cerrar-carrito');
+const listaCarritoItems = document.getElementById('lista-carrito-items');
+const carritoTotal = document.getElementById('carrito-total');
+const contadorCarrito = document.getElementById('contador-carrito');
+const btnPagar = document.getElementById('btn-pagar');
+
+btnCarrito.addEventListener('click', () => {
+    modalCarrito.style.display = 'flex';
+});
+
+cerrarCarrito.addEventListener('click', () => {
+    modalCarrito.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modalCarrito) {
+        modalCarrito.style.display = 'none';
+    }
+});
+
 const botonesComprar = document.querySelectorAll('.btn-comprar');
 
 botonesComprar.forEach(boton => {
     boton.addEventListener('click', (e) => {
         const card = e.target.closest('.card');
         const nombreDisfraz = card.querySelector('h3').textContent;
-        const precioDisfraz = card.querySelector('.precio').textContent;
+        const precioTexto = card.querySelector('.precio').textContent;
+        const precioNumerico = parseFloat(precioTexto.replace('$', '').replace(' MXN', '').replace(',', ''));
 
-        alert(`🎃 ¡Has añadido "${nombreDisfraz}" (${precioDisfraz}) a tu caldero de compras! 🧹🦇`);
+        const itemExistente = carrito.find(item => item.nombre === nombreDisfraz);
+
+        if (itemExistente) {
+            itemExistente.cantidad += 1;
+        } else {
+            carrito.push({
+                nombre: nombreDisfraz,
+                precio: precioNumerico,
+                cantidad: 1
+            });
+        }
+
+        actualizarCarrito();
+        alert(`🎃 ¡Has añadido "${nombreDisfraz}" (${precioTexto}) a tu caldero de compras! 🧹🦇`);
     });
+});
+
+function actualizarCarrito() {
+    listaCarritoItems.innerHTML = '';
+    let total = 0;
+    let totalItems = 0;
+
+    if (carrito.length === 0) {
+        listaCarritoItems.innerHTML = '<p class="carrito-vacio">Tu carrito está vacío, ¡agrega algo terrorífico!</p>';
+        carritoTotal.textContent = '$0.00 MXN';
+        contadorCarrito.textContent = '0';
+        return;
+    }
+
+    carrito.forEach((item, index) => {
+        total += item.precio * item.cantidad;
+        totalItems += item.cantidad;
+
+        const divItem = document.createElement('div');
+        divItem.className = 'carrito-item';
+        divItem.innerHTML = `
+            <span>${item.nombre} (x${item.cantidad})</span>
+            <span>$${(item.precio * item.cantidad).toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN</span>
+            <button class="btn-eliminar" data-index="${index}">❌</button>
+        `;
+        listaCarritoItems.appendChild(divItem);
+    });
+
+    carritoTotal.textContent = `$${total.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+    contadorCarrito.textContent = totalItems;
+
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        });
+    });
+}
+
+btnPagar.addEventListener('click', () => {
+    if (carrito.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+    }
+    alert('🦇 ¡Compra exitosa! Gracias por tu pedido en DogStore. ¡Feliz Halloween! 🎃');
+    carrito = [];
+    actualizarCarrito();
+    modalCarrito.style.display = 'none';
 });
